@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  udp_bot:
+    build: .
+    container_name: udp_bot
+    restart: always
+    environment:
+      - BOT_TOKEN=YOUR_BOT_TOKEN
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["python3", "udp_bot.py"]
+
+  udp_container:
+    build: .
+    container_name: udp_container
+    restart: always
+    volumes:
+      - .:/app
+    working_dir: /app

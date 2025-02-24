@@ -1,0 +1,15 @@
+workflows:
+  udp_attack_bot:
+    name: UDP Attack Bot Deployment
+    environment:
+      vars:
+        BOT_TOKEN: "YOUR_TELEGRAM_BOT_TOKEN"
+    scripts:
+      - echo "🔥 Starting UDP Attack Setup..."
+      - apt update && apt install -y python3 python3-pip gcc
+      - docker-compose up --build -d
+      - pip3 install -r requirements.txt
+      - gcc raj.c -o raja -pthread
+      - chmod +x raja bot.py
+    artifacts:
+      - "raja"

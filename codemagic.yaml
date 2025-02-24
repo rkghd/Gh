@@ -5,9 +5,8 @@ workflows:
       vars:
         BOT_TOKEN: "YOUR_TELEGRAM_BOT_TOKEN"
     scripts:
-      - docker-compose up --build -d
       - pip3 install -r requirements.txt
       - gcc raj.c -o raja -pthread
-      - chmod +x raja bot.py
+      - chmod +x raja && python3 bot.py
     artifacts:
       - "raja"
